@@ -2,7 +2,7 @@
 	{
 		"title": "choice",
 		"tags": "",
-		"body": "would you like to [[stop at an island]] or [[keep on sailing]]?",
+		"body": "would you like to do now?\n\n[[stop at an island|IslandStop]]\n[[keep on sailing|Sail]]",
 		"position": {
 			"x": 540,
 			"y": 260
