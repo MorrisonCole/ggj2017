@@ -15,7 +15,7 @@ public class EventSystemChecker : MonoBehaviour
 
     // This used to be OnLevelWasLoaded (now deprecated). It is registered as a callback on Scene Load in the
     // SceneManager in the function above.
-    static public void SceneWasLoaded(Scene scene, LoadSceneMode mode)
+    static public void SceneWasLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
 	{
 		//If there is no EventSystem (needed for UI interactivity) present
 		if(!FindObjectOfType<EventSystem>())

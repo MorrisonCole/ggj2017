@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class ShipResources : MonoBehaviour
 {
-    public int Crew;
+    public List<GameObject> CrewList;
+    public GameObject Crew;
 }

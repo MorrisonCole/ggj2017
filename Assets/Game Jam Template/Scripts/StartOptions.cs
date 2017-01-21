@@ -74,7 +74,7 @@ public class StartOptions : MonoBehaviour {
     }
 
     //Once the level has loaded, check if we want to call PlayLevelMusic
-    void SceneWasLoaded(Scene scene, LoadSceneMode mode)
+    void SceneWasLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
     {
 		//if changeMusicOnStart is true, call the PlayLevelMusic function of playMusic
 		if (changeMusicOnStart)

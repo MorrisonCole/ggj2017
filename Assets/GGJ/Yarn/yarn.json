@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Start",
+        "tags": "",
+        "body": "<<set $event to 0>>\n<<set $distance to 0>>\n<<set $food to 100>>\n<<set $crew to 20>>\nArr!\nYe be on a ship, matey!\nWhat wish ye t' de?\n[[Keep sailing.|sailing]]\n[[Stop at an island.|island]]",
+        "position": {
+            "x": 598,
+            "y": 112
+        },
+        "colorID": 0
+    },
+    {
+        "title": "sailing",
+        "tags": "",
+        "body": "<<set $distance to $distance + ($crew * 2)>>\n<<set $food to $food - $crew>>\n<<if $food < 1>>\n<<set $food to 0>>\n<<set $crew to $crew - 5>>\n<<if $crew < 1>>\nGame over! Better luck next time.\n<<else>>\nYour crew are starving and unhappy.\nScurvy Bob is trying to harpoon a seagull.\nThere are tears in his eyes.\n[[What next?|choice]]\n<<endif>>\n<<endif>>\n<<if $food > 0>>\nYou are sailing. \nYour crew start to sing a sea shanty.\nThe rum is passed round.\n<<if $distance < 1000>>\n[[What next?|choice]]\n<<else>>\nSUCCESS!!! You win the game.\n<<endif>>\n<<endif>>",
+        "position": {
+            "x": 329,
+            "y": 334
+        },
+        "colorID": 0
+    },
+    {
+        "title": "island",
+        "tags": "",
+        "body": "<<switch Scene encounter>>",
+        "position": {
+            "x": 877,
+            "y": 332
+        },
+        "colorID": 0
+    },
+    {
+        "title": "choice",
+        "tags": "",
+        "body": "You are on a ship.\n[[Keep sailing.|sailing]]\n[[Stop at an island|island]]",
+        "position": {
+            "x": 596,
+            "y": 334
+        },
+        "colorID": 0
+    }
+]
