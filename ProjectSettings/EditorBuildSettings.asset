@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GGJ/Scenes/Boat.unity
+    path: Assets/GGJ/Scenes/intro.unity
   - enabled: 1
-    path: Assets/GGJ/Scenes/LizardIsland.unity
+    path: Assets/GGJ/Scenes/navigation.unity
+  - enabled: 1
+    path: Assets/GGJ/Scenes/coordinator.unity
+  - enabled: 1
+    path: Assets/GGJ/Scenes/Encounters/encounter_lizard.unity
+  - enabled: 1
+    path: Assets/GGJ/Scenes/Encounters/encounter_castaway.unity
+  - enabled: 1
+    path: Assets/GGJ/Scenes/sea_day.unity
+  - enabled: 1
+    path: Assets/GGJ/Scenes/sea_night.unity
+  - enabled: 1
+    path: Assets/GGJ/Scenes/prologue.unity

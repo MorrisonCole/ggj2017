@@ -65,6 +65,8 @@ namespace GGJ
 
         public RectTransform gameControlsContainer;
 
+        public ScrollRect ScrollRect;
+
         void Awake()
         {
             // Start by hiding the container, line and option buttons
@@ -95,10 +97,20 @@ namespace GGJ
                 // Display the line one character at a time
                 var stringBuilder = new StringBuilder();
 
-                foreach (char c in line.text)
+                for (var i = 0; i < line.text.Length; i++)
                 {
+                    char c = line.text[i];
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        lineText.text = line.text;
+                        yield return null;
+                        ScrollRect.verticalNormalizedPosition = 0f;
+                        break;
+                    }
+
                     stringBuilder.Append(c);
                     lineText.text = stringBuilder.ToString();
+                    ScrollRect.verticalNormalizedPosition = 0f;
                     yield return new WaitForSeconds(textSpeed);
                 }
             }
@@ -106,6 +118,7 @@ namespace GGJ
             {
                 // Display the line immediately if textSpeed == 0
                 lineText.text = line.text;
+                ScrollRect.verticalNormalizedPosition = 0f;
             }
 
             // Show the 'press any key' prompt when done, if we have one
@@ -114,10 +127,11 @@ namespace GGJ
 
 
             // Wait for any user input
-            while (Input.anyKeyDown == false)
+            do
             {
                 yield return null;
-            }
+            } while (!Input.GetKeyDown(KeyCode.Space));
+            yield return null;
 
             if (continuePrompt != null)
                 continuePrompt.SetActive(false);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,15 +10,16 @@ public class SpawnWave : MonoBehaviour
     public float TimeBetweenWaves = 0.2f;
 
     private ShipResources shipResources;
+    private List<GameObject> currentCrew;
 
     private void Start()
     {
         shipResources = Resources.GetComponent<ShipResources>();
 
-        var currentCrew = GetCurrentCrew();
+        currentCrew = shipResources.GetCurrentCrew();
         currentCrew.Shuffle();
 
-        var xOffset = 0f;
+        var xOffset = -currentCrew.Count / 2f * PositionOffset;
         foreach (var crewMember in currentCrew)
         {
             crewMember.SetActive(true);
@@ -25,29 +27,24 @@ public class SpawnWave : MonoBehaviour
             xOffset += PositionOffset;
         }
 
-        StartCoroutine(MexicanWave(currentCrew));
+        StartWave(null);
     }
 
-    private List<GameObject> GetCurrentCrew()
+    public void StartWave(Action<float> onWaveEnd)
     {
-        var currentCrew = new List<GameObject>();
-        for (int i = 0; i < shipResources.Crew.transform.childCount; i++)
-        {
-            currentCrew.Add(shipResources.Crew.transform.GetChild(i).gameObject);
-        }
-        return currentCrew;
+        StartCoroutine(MexicanWave(onWaveEnd));
     }
 
-    private IEnumerator MexicanWave(List<GameObject> currentCrew)
+    private IEnumerator MexicanWave(Action<float> onWaveEnd)
     {
         while (true)
         {
             foreach (var crewMember in currentCrew)
             {
-                crewMember.GetComponentInChildren<WaveBehaviour>().Wave();
+                crewMember.GetComponentInChildren<IWaveBehaviour>().Wave(onWaveEnd);
                 yield return new WaitForSeconds(TimeBetweenWaves);
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2f);
         }
     }
 }

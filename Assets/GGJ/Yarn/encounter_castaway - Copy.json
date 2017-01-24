@@ -1,0 +1,42 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "You land upon the shore of a barren desert island.\n...but it is not deserted!!!\nYou see a sunburnt castaway, dressed in rags.\nHe rushes madly towards you.\n\"Wilson and I thought we were going to be stuck here forever!\"\nHe places his arm around the person NOT standing next to him.\n[[Offer to take him off the island.|help]]\n[[Claim the ship is full.|nohelp]]\n[[Do a Mexican wave!|mexicanwave]]\n",
+		"position": {
+			"x": 572,
+			"y": 85
+		},
+		"colorID": 0
+	},
+	{
+		"title": "help",
+		"tags": "",
+		"body": "You offer to take the castaway with you, but he shakes his head.\n\"Take Wilson instead,\" he says. \"He's been here longer than me.\"\nHe leans over and whispers: \"I think he's going crazy!\"\nYou agree, pretty much just to get out of there.\nThat night, one of your crewmembers vanishes.\n\"WILSON WAS HERE!\" is scratched into the wall by their hammock.\n<<switch Scene navigation>>\n",
+		"position": {
+			"x": 333,
+			"y": 316
+		},
+		"colorID": 0
+	},
+	{
+		"title": "nohelp",
+		"tags": "",
+		"body": "You clear your throat.\n\"I regret to inform you, sir, that the ship is full?\"\n\"Full?\" screams the castaway, tearing at his hair. \"FULL???\"\n\"I'LL SHOW YOU FULL!!!\"\nAnd he does. He crams your hold full of delicious tropical fruits.\nThat sure showed you...you guess?\n<<switch Scene navigation>>",
+		"position": {
+			"x": 569,
+			"y": 318
+		},
+		"colorID": 0
+	},
+	{
+		"title": "mexicanwave",
+		"tags": "",
+		"body": "<<start MexicanWave>>",
+		"position": {
+			"x": 813,
+			"y": 320
+		},
+		"colorID": 0
+	}
+]

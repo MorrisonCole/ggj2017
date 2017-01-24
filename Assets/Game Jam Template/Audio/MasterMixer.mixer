@@ -14,6 +14,7 @@ AudioMixerController:
   m_StartSnapshot: {fileID: 24500003}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
+  m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 4570643c44b0a4ed280458a81f91cf1e
     name: musicVol
@@ -24,6 +25,7 @@ AudioMixerController:
     - 5c695f713377e4ddb998c4060c885188
     - 2502a5aad14784b1586e04a58d82abe3
     - 9026203d423ca421185dfbf9561b4b2c
+    - 748789e9328ca94419e4981677e7b369
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500003}
@@ -38,6 +40,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 24301952}
   - {fileID: 24324684}
+  - {fileID: 243419100583837020}
   m_Volume: b2cc95b5d75b5428a8f51d8061ebe927
   m_Pitch: 5fb8eb5f3c1c54684bedb56b663743f5
   m_Effects:
@@ -129,6 +132,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: 5a86393fbd46043aba7c2766c98de25f
   m_FloatValues:
     b2cc95b5d75b5428a8f51d8061ebe927: -2.8722944
+    4570643c44b0a4ed280458a81f91cf1e: -24.162655
     1e3a377f854de43b7a3e47634a4b05bc: 0.04171297
   m_TransitionOverrides: {}
 --- !u!245 &24519918
@@ -142,3 +146,70 @@ AudioMixerSnapshotController:
   m_FloatValues:
     b2cc95b5d75b5428a8f51d8061ebe927: -80
   m_TransitionOverrides: {}
+--- !u!243 &243419100583837020
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Ambient
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 748789e9328ca94419e4981677e7b369
+  m_Children: []
+  m_Volume: de7e806278f9a6644aa83d1fdeac92d5
+  m_Pitch: 5b29c1d8a2ed641448437f44f5aac7c8
+  m_Effects:
+  - {fileID: 244576887297915756}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &244324279907913770
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: c94fec8107df3264c91fb345623cb3ed
+  m_EffectName: OculusSpatializerReflection
+  m_MixLevel: ac7d59a6443479c4380a9eab3983db85
+  m_Parameters:
+  - m_ParameterName: GScale
+    m_GUID: 165cbc7d3a2549b4bba8d02ca0a45b27
+  - m_ParameterName: E.Rflt On
+    m_GUID: e32918347089af34f8fb3f9632d11559
+  - m_ParameterName: E.Rflt Rev On
+    m_GUID: 92fbd454a58a3e74082ffde674b78b67
+  - m_ParameterName: Room X
+    m_GUID: 06e336a7791d0e040ab20f8fdee2cb06
+  - m_ParameterName: Room Y
+    m_GUID: 0ac11f61fccdc2945907e7dd73683f22
+  - m_ParameterName: Room Z
+    m_GUID: 316979e577bbf1f49812673700f36dfb
+  - m_ParameterName: Left
+    m_GUID: 764dfda44a9b3fe4ba0ae96debf8586a
+  - m_ParameterName: Right
+    m_GUID: 3fc9a8a5c19284d4ca139f0b4c52c4e4
+  - m_ParameterName: Up
+    m_GUID: 2ef32f3675a86d9439540a21d8c87473
+  - m_ParameterName: Down
+    m_GUID: 7fe9609b28d8c5a48a58f64e48970ad1
+  - m_ParameterName: Behind
+    m_GUID: d47795d0afc33be4797e245683f555a5
+  - m_ParameterName: Front
+    m_GUID: 475713850b3142f4c94cbfda4325d3aa
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244576887297915756
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 38bdb4220eea7054da11b54291f054b0
+  m_EffectName: Attenuation
+  m_MixLevel: d0c803189f266c04a97f9444b06969c5
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0

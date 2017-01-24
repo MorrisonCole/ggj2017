@@ -1,21 +1,31 @@
 ﻿using System.Collections.Generic;
+using System.Net.Mime;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InitialCrewSpawner : MonoBehaviour
 {
     public GameObject Crew;
     public GameObject Captain;
-    public GameObject CrewMember;
+    public List<GameObject> CrewMembers;
+    public Vector2 MinimumSize;
+    public Vector2 MaximumSize;
     public int StartingCrew;
+
+    public Text CrewCount;
+    public Text FoodCount;
 
     private void Start()
     {
         for (var i = 0; i < StartingCrew; i++)
         {
-            Instantiate(CrewMember, Crew.transform);
+            var randomCrewMember = Random.Range(0, CrewMembers.Count);
+            var crewMember = Instantiate(CrewMembers[randomCrewMember], Crew.transform);
+            crewMember.transform.localScale = new Vector3(Random.Range(MinimumSize.x, MaximumSize.x), Random.Range(MinimumSize.y, MaximumSize.y), crewMember.transform.localScale.z);
+            crewMember.SetActive(false);
         }
 
-        Instantiate(Captain, Crew.transform);
+        Instantiate(Captain, Crew.transform).SetActive(false);
     }
 }
 

@@ -12,7 +12,7 @@
     {
         "title": "runaway",
         "tags": "",
-        "body": "<<set $food to $food + 50>>\nYou run away screaming.\nThe lizard stomps after you!\nYou wait on your ship until it wanders off...\n...then return to pick up the fruit shaken from the trees!\n<<navigation>>",
+        "body": "<<set $food to $food + 50>>\nYou run away screaming.\nThe lizard stomps after you!\nYou wait on your ship until it wanders off...\n...then return to pick up the fruit shaken from the trees!\n<<switch Scene navigation>>",
         "position": {
             "x": 323,
             "y": 347
@@ -22,7 +22,7 @@
     {
         "title": "staystill",
         "tags": "",
-        "body": "<<set $crew to $crew - 1>>\nYou don't move. It can't see you if yot don't move.\nExcept apparently it can.\nYou run away screaming after all, minus Pegleg Pete.\n<<navigation>>",
+        "body": "<<set $crew to $crew - 1>>\nYou don't move. It can't see you if yot don't move.\nExcept apparently it can.\nYou run away screaming after all, minus Pegleg Pete.\n<<switch Scene navigation>>",
         "position": {
             "x": 571,
             "y": 345
@@ -32,7 +32,7 @@
     {
         "title": "mexicanwave",
         "tags": "",
-        "body": "<<mexicanwave>>",
+        "body": "<<start MexicanWave>>",
         "position": {
             "x": 798,
             "y": 351
