@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
-public class ShipControls : MonoBehaviour
+namespace Undercurrent.Scripts.Ship
 {
-    public float Speed = 1;
-
-    void Update()
+    public class ShipControls : MonoBehaviour
     {
-        var horizontal = Input.GetAxis("Horizontal");
-        transform.position = transform.position + Vector3.right * (Time.deltaTime * horizontal * Speed);
+        public float Speed = 1;
+
+        void Update()
+        {
+            var horizontal = Input.GetAxis("Horizontal");
+            transform.position = transform.position + Vector3.right * (Time.deltaTime * horizontal * Speed);
+        }
     }
 }

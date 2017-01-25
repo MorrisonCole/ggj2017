@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 
-public class PlaySoundClipOnButtonDown : MonoBehaviour
+namespace Undercurrent.Scripts.Audio
 {
-    public AudioSource AudioSource;
-
-    private void Update()
+    public class PlaySoundClipOnButtonDown : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        public AudioSource AudioSource;
+
+        private void Update()
         {
-            AudioSource.Play();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                AudioSource.Play();
+            }
         }
     }
 }

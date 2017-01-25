@@ -2,31 +2,34 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class Glint : MonoBehaviour
+namespace Undercurrent.Scripts.Ship
 {
-    public Light Light;
-    public float MinimumWait = 2;
-    public float MaximumWait = 12;
-
-    private void Start()
+    public class Glint : MonoBehaviour
     {
-        BeginCoroutine();
-    }
+        public Light Light;
+        public float MinimumWait = 2;
+        public float MaximumWait = 12;
 
-    private IEnumerator GlintLight()
-    {
-        yield return new WaitForSeconds(Random.Range(MinimumWait, MaximumWait));
+        private void Start()
+        {
+            BeginCoroutine();
+        }
 
-        DOTween.To(() => Light.intensity, x => Light.intensity = x, 0.75f, 3).SetEase(Ease.InSine).OnComplete(EaseOut);
-    }
+        private IEnumerator GlintLight()
+        {
+            yield return new WaitForSeconds(Random.Range(MinimumWait, MaximumWait));
 
-    private void EaseOut()
-    {
-        DOTween.To(() => Light.intensity, x => Light.intensity = x, 0, 2).SetEase(Ease.OutSine).OnComplete(BeginCoroutine);
-    }
+            DOTween.To(() => Light.intensity, x => Light.intensity = x, 0.75f, 3).SetEase(Ease.InSine).OnComplete(EaseOut);
+        }
 
-    private void BeginCoroutine()
-    {
-        StartCoroutine(GlintLight());
+        private void EaseOut()
+        {
+            DOTween.To(() => Light.intensity, x => Light.intensity = x, 0, 2).SetEase(Ease.OutSine).OnComplete(BeginCoroutine);
+        }
+
+        private void BeginCoroutine()
+        {
+            StartCoroutine(GlintLight());
+        }
     }
 }

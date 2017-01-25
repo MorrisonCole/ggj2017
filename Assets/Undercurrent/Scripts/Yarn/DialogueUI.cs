@@ -29,6 +29,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 // Displays dialogue lines to the player, and sends
 // user choices back to the dialogue system.
@@ -38,9 +39,9 @@ using UnityEngine.UI;
 // is that you provide the RunLine, RunOptions, RunCommand
 // and DialogueComplete coroutines; what they do is up to you.
 
-namespace GGJ
+namespace Undercurrent.Scripts.Yarn
 {
-    public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
+    public class DialogueUI : DialogueUIBehaviour
     {
         // The object that contains the dialogue and the options.
         // This object will be enabled when conversation starts, and
@@ -56,7 +57,7 @@ namespace GGJ
         // A delegate (ie a function-stored-in-a-variable) that
         // we call to tell the dialogue system about what option
         // the user selected
-        private Yarn.OptionChooser SetSelectedOption;
+        private global::Yarn.OptionChooser SetSelectedOption;
 
         [Tooltip("How quickly to show the text, in seconds per character")] public float textSpeed = 0.025f;
 
@@ -87,7 +88,7 @@ namespace GGJ
 
 
         // Show a line of dialogue, gradually
-        public override IEnumerator RunLine(Yarn.Line line)
+        public override IEnumerator RunLine(global::Yarn.Line line)
         {
             // Show the text
             lineText.gameObject.SetActive(true);
@@ -138,8 +139,8 @@ namespace GGJ
         }
 
         // Show a list of options, and wait for the player to make a selection.
-        public override IEnumerator RunOptions(Yarn.Options optionsCollection,
-            Yarn.OptionChooser optionChooser)
+        public override IEnumerator RunOptions(global::Yarn.Options optionsCollection,
+            global::Yarn.OptionChooser optionChooser)
         {
             // Do a little bit of safety checking
             if (optionsCollection.options.Count > optionButtons.Count)
@@ -185,7 +186,7 @@ namespace GGJ
         }
 
         // Run an internal command.
-        public override IEnumerator RunCommand(Yarn.Command command)
+        public override IEnumerator RunCommand(global::Yarn.Command command)
         {
             // "Perform" the command
             Debug.Log("Command: " + command.text);

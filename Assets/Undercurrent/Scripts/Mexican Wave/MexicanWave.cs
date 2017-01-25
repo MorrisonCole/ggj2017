@@ -3,45 +3,48 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
 
-public class MexicanWave : MonoBehaviour
+namespace Undercurrent.Scripts.Mexican_Wave
 {
-    public float WaveSpeedMultiplier;
-    public float WaveBeginTime;
-    public AudioSource AudioSource;
-    public SpawnWave SpawnWave;
-    public GameObject Countdown;
-    public Text CountdownText;
-
-    [YarnCommand("start")]
-    public void PlayerReadyForWave()
+    public class MexicanWave : MonoBehaviour
     {
-        StartCoroutine(CountdownToWave());
-    }
+        public float WaveSpeedMultiplier;
+        public float WaveBeginTime;
+        public AudioSource AudioSource;
+        public SpawnWave SpawnWave;
+        public GameObject Countdown;
+        public Text CountdownText;
 
-    private IEnumerator CountdownToWave()
-    {
-        Countdown.SetActive(true);
-        var countdown = 3;
-        while (countdown > 0)
+        [YarnCommand("start")]
+        public void PlayerReadyForWave()
         {
-            CountdownText.text = countdown.ToString();
-            yield return new WaitForSeconds(1f);
-            countdown--;
+            StartCoroutine(CountdownToWave());
         }
-        Countdown.SetActive(false);
 
-        StartCoroutine(BeginWaitForWave());
-    }
+        private IEnumerator CountdownToWave()
+        {
+            Countdown.SetActive(true);
+            var countdown = 3;
+            while (countdown > 0)
+            {
+                CountdownText.text = countdown.ToString();
+                yield return new WaitForSeconds(1f);
+                countdown--;
+            }
+            Countdown.SetActive(false);
 
-    private IEnumerator BeginWaitForWave()
-    {
-        AudioSource.PlayOneShot(AudioSource.clip);
-        yield return new WaitForSeconds(WaveBeginTime / WaveSpeedMultiplier);
-        SpawnWave.StartWave(OnWaveEnd);
-    }
+            StartCoroutine(BeginWaitForWave());
+        }
 
-    private void OnWaveEnd(float timeOffset)
-    {
+        private IEnumerator BeginWaitForWave()
+        {
+            AudioSource.PlayOneShot(AudioSource.clip);
+            yield return new WaitForSeconds(WaveBeginTime / WaveSpeedMultiplier);
+            SpawnWave.StartWave(OnWaveEnd);
+        }
 
+        private void OnWaveEnd(float timeOffset)
+        {
+
+        }
     }
 }

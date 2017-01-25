@@ -1,28 +1,31 @@
 ﻿using UnityEngine;
 
-public class RotationClamp : MonoBehaviour
+namespace Undercurrent.Scripts.Ship
 {
-    public int MinimumX;
-    public int MaximumX;
-
-    private void Update()
+    public class RotationClamp : MonoBehaviour
     {
-        transform.localRotation = ClampRotationAroundXAxis(transform.localRotation);
-    }
+        public int MinimumX;
+        public int MaximumX;
 
-    private Quaternion ClampRotationAroundXAxis(Quaternion q)
-    {
-        q.x /= q.w;
-        q.y /= q.w;
-        q.z /= q.w;
-        q.w = 1.0f;
+        private void Update()
+        {
+            transform.localRotation = ClampRotationAroundXAxis(transform.localRotation);
+        }
 
-        float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan (q.x);
+        private Quaternion ClampRotationAroundXAxis(Quaternion q)
+        {
+            q.x /= q.w;
+            q.y /= q.w;
+            q.z /= q.w;
+            q.w = 1.0f;
 
-        angleX = Mathf.Clamp (angleX, MinimumX, MaximumX);
+            float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan (q.x);
 
-        q.x = Mathf.Tan (0.5f * Mathf.Deg2Rad * angleX);
+            angleX = Mathf.Clamp (angleX, MinimumX, MaximumX);
 
-        return q;
+            q.x = Mathf.Tan (0.5f * Mathf.Deg2Rad * angleX);
+
+            return q;
+        }
     }
 }

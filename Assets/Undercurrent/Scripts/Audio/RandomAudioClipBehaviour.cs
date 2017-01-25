@@ -1,30 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class RandomAudioClipBehaviour : MonoBehaviour
+namespace Undercurrent.Scripts.Audio
 {
-    public AudioClip[] AudioClips;
-    public AudioSource AudioSource;
-    public float MinimumWait = 1f;
-    public float MaximumWait = 15f;
-
-    private void Start()
+    public class RandomAudioClipBehaviour : MonoBehaviour
     {
-        StartCoroutine(PlayRandomAudio());
-    }
+        public AudioClip[] AudioClips;
+        public AudioSource AudioSource;
+        public float MinimumWait = 1f;
+        public float MaximumWait = 15f;
 
-    private IEnumerator PlayRandomAudio()
-    {
-        while (true)
+        private void Start()
         {
-            if (!AudioSource.isPlaying)
+            StartCoroutine(PlayRandomAudio());
+        }
+
+        private IEnumerator PlayRandomAudio()
+        {
+            while (true)
             {
-                AudioSource.clip = AudioClips[Random.Range(0, AudioClips.Length)];
-                AudioSource.Play();
-            }
-            else
-            {
-                yield return new WaitForSeconds(Random.Range(MinimumWait, MaximumWait));
+                if (!AudioSource.isPlaying)
+                {
+                    AudioSource.clip = AudioClips[Random.Range(0, AudioClips.Length)];
+                    AudioSource.Play();
+                }
+                else
+                {
+                    yield return new WaitForSeconds(Random.Range(MinimumWait, MaximumWait));
+                }
             }
         }
     }

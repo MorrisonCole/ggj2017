@@ -1,12 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
-public class WaveBehaviour : MonoBehaviour, IWaveBehaviour
+namespace Undercurrent.Scripts.Mexican_Wave
 {
-    public int WavePower = 215;
-
-    public void Wave(Action<float> onWaveEnd)
+    public class WaveBehaviour : MonoBehaviour, IWaveBehaviour
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.up * WavePower);
+        public int WavePower = 215;
+
+        public void Wave(Action<float> onWaveEnd)
+        {
+            GetComponent<Rigidbody>().AddForce(Vector3.up * WavePower);
+        }
     }
 }

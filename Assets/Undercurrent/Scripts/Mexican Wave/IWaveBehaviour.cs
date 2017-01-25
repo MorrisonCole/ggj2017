@@ -1,6 +1,9 @@
 ﻿using System;
 
-public interface IWaveBehaviour
+namespace Undercurrent.Scripts.Mexican_Wave
 {
-    void Wave(Action<float> onWaveEnd);
+    public interface IWaveBehaviour
+    {
+        void Wave(Action<float> onWaveEnd);
+    }
 }

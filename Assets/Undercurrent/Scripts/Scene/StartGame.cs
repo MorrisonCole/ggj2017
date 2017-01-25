@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartGame : MonoBehaviour
+namespace Undercurrent.Scripts.Scene
 {
-	private void Update()
-	{
-	    if (Input.GetMouseButtonDown(0))
-	    {
-	        SceneManager.LoadScene("coordinator");
-	    }
-	}
+    public class StartGame : MonoBehaviour
+    {
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene("coordinator");
+            }
+        }
+    }
 }

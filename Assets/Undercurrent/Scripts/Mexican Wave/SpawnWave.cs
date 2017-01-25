@@ -1,50 +1,54 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Undercurrent.Scripts.Resources;
 using UnityEngine;
 
-public class SpawnWave : MonoBehaviour
+namespace Undercurrent.Scripts.Mexican_Wave
 {
-    public GameObject Resources;
-    public float PositionOffset = 2;
-    public float TimeBetweenWaves = 0.2f;
-
-    private ShipResources shipResources;
-    private List<GameObject> currentCrew;
-
-    private void Start()
+    public class SpawnWave : MonoBehaviour
     {
-        shipResources = Resources.GetComponent<ShipResources>();
+        public GameObject Resources;
+        public float PositionOffset = 2;
+        public float TimeBetweenWaves = 0.2f;
 
-        currentCrew = shipResources.GetCurrentCrew();
-        currentCrew.Shuffle();
+        private ShipResources shipResources;
+        private List<GameObject> currentCrew;
 
-        var xOffset = -currentCrew.Count / 2f * PositionOffset;
-        foreach (var crewMember in currentCrew)
+        private void Start()
         {
-            crewMember.SetActive(true);
-            crewMember.transform.position = new Vector3(transform.position.x + xOffset, transform.position.y, transform.position.z);
-            xOffset += PositionOffset;
-        }
+            shipResources = Resources.GetComponent<ShipResources>();
 
-        StartWave(null);
-    }
+            currentCrew = shipResources.GetCurrentCrew();
+            currentCrew.Shuffle();
 
-    public void StartWave(Action<float> onWaveEnd)
-    {
-        StartCoroutine(MexicanWave(onWaveEnd));
-    }
-
-    private IEnumerator MexicanWave(Action<float> onWaveEnd)
-    {
-        while (true)
-        {
+            var xOffset = -currentCrew.Count / 2f * PositionOffset;
             foreach (var crewMember in currentCrew)
             {
-                crewMember.GetComponentInChildren<IWaveBehaviour>().Wave(onWaveEnd);
-                yield return new WaitForSeconds(TimeBetweenWaves);
+                crewMember.SetActive(true);
+                crewMember.transform.position = new Vector3(transform.position.x + xOffset, transform.position.y, transform.position.z);
+                xOffset += PositionOffset;
             }
-            yield return new WaitForSeconds(2f);
+
+            StartWave(null);
+        }
+
+        public void StartWave(Action<float> onWaveEnd)
+        {
+            StartCoroutine(MexicanWave(onWaveEnd));
+        }
+
+        private IEnumerator MexicanWave(Action<float> onWaveEnd)
+        {
+            while (true)
+            {
+                foreach (var crewMember in currentCrew)
+                {
+                    crewMember.GetComponentInChildren<IWaveBehaviour>().Wave(onWaveEnd);
+                    yield return new WaitForSeconds(TimeBetweenWaves);
+                }
+                yield return new WaitForSeconds(2f);
+            }
         }
     }
 }
