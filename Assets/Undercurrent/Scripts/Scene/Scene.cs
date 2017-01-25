@@ -16,7 +16,14 @@ namespace Undercurrent.Scripts.Scene
                 SceneManager.LoadScene(initialScene, LoadSceneMode.Additive);
             }
             var dialogRunner = FindObjectOfType<DialogueRunner>();
-            dialogRunner.StartDialogue();
+            if (dialogRunner == null)
+            {
+                Debug.LogErrorFormat("Require object of type {0}, but found no GameObject in the scene.", typeof(DialogueRunner));
+            }
+            else
+            {
+                dialogRunner.StartDialogue();
+            }
         }
 
         [YarnCommand("switch")]
